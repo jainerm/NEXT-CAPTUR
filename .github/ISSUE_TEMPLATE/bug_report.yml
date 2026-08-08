@@ -1,0 +1,33 @@
+name: Reporte de Error 🐛
+description: Informa sobre algo que no funciona correctamente.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por informar el error! Por favor, proporciona la mayor cantidad de información posible.
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Descripción del Error
+      description: Una descripción clara y concisa de lo que sucede.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Pasos para Reproducir
+      description: ¿Cómo podemos ver el error?
+      placeholder: |
+        1. Abrir la app
+        2. Navegar a...
+        3. Hacer clic en...
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Comportamiento Esperado
+      description: ¿Qué debería haber pasado?
+    validations:
+      required: true

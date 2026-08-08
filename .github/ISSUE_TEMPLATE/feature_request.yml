@@ -1,0 +1,16 @@
+name: Solicitud de Nueva Funcionalidad ✨
+description: Sugiere una idea para este proyecto.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: ¿Tu solicitud está relacionada con un problema?
+      description: Una descripción clara y concisa de cuál es el problema.
+  - type: textarea
+    id: solution-description
+    attributes:
+      label: Descripción de la Solicitud
+      description: Una descripción clara y concisa de lo que quieres que suceda.
+    validations:
+      required: true
