@@ -3,7 +3,7 @@ import { StatusBar, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
-import RootNavigator from './src/navigation/RootNavigator';
+import RootNavigator from './src/navigation/Root-navigator';
 
 enableScreens();
 
