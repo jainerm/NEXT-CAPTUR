@@ -1,10 +1,10 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginScreen from '../screens/LoginScreen';
-import HomeScreen from '../screens/HomeScreen';
-import UsersScreen from '../screens/UsersScreen';
-import CategoriesScreen from '../screens/CategoriesScreen';
-import BranchesScreen from '../screens/BranchesScreen';
-import ConnectivityScreen from '../screens/ConnectivityScreen';
+import LoginScreen from '../screens/login-screen';
+import HomeScreen from '../screens/home-screen';
+import UsersScreen from '../screens/users-screen';
+import CategoriesScreen from '../screens/categories-screen';
+import BranchesScreen from '../screens/branches-screen';
+import ConnectivityScreen from '../screens/connectivity-screen';
 
 type RootStackParamList = {
   Login: undefined;
