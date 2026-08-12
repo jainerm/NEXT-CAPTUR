@@ -5,6 +5,7 @@ import {
   Pressable,
   TouchableOpacity,
   Dimensions,
+  Modal,
 } from 'react-native';
 import {
   Menu,
@@ -15,7 +16,6 @@ import {
   Wifi,
   LogOut,
   Grid,
-  ChevronDown,
 } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -25,7 +25,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../navigation/Root-navigator';
 
 const { width } = Dimensions.get('window');
-const drawerWidth = Math.min(300, width * 0.72);
+const drawerWidth = Math.min(300, width * 0.75);
 
 const menuItems: {
   key: string;
@@ -100,15 +100,19 @@ export default function ScreenHeader({ routeName }: ScreenHeaderProps) {
         <View style={styles.spacer} />
       </View>
 
-      {isOpen && (
-        <View style={styles.dropdownOverlay}>
-          <TouchableOpacity style={styles.backdrop} activeOpacity={1} onPress={toggleMenu} />
-          <View style={styles.dropdown}>
+      <Modal
+        transparent={true}
+        visible={isOpen}
+        animationType="fade"
+        onRequestClose={toggleMenu}>
+        <View style={styles.modalContainer}>
+          <Pressable style={styles.modalBackdrop} onPress={toggleMenu} />
+          <View style={[styles.modalDrawer, { paddingTop: Math.max(insets.top, 20) }]}>
             <View style={styles.drawerHeader}>
               <View style={styles.drawerBadge}>
                 <Layers size={20} color={palette.white.main} />
               </View>
-              <View>
+              <View style={styles.drawerTitleWrapper}>
                 <FontText style={styles.drawerTitle}>Gestor</FontText>
                 <FontText style={styles.drawerSubtitle}>Administrador</FontText>
               </View>
@@ -116,24 +120,29 @@ export default function ScreenHeader({ routeName }: ScreenHeaderProps) {
                 <X size={20} color={palette.darkGray.main} />
               </Pressable>
             </View>
-            {menuItems.map(item => {
-              const Icon = item.icon;
-              const isActive = item.key === selectedKey;
-              return (
-                <Pressable
-                  key={item.key}
-                  style={[styles.menuItem, isActive && styles.menuItemActive]}
-                  onPress={() => handleMenuPress(item.key)}>
-                  <View style={styles.itemIcon}>
-                    <Icon size={18} color={item.danger ? palette.red.main : palette.darkGray.main} />
-                  </View>
-                  <FontText style={[styles.itemLabel, item.danger && styles.itemDanger]}>{item.label}</FontText>
-                </Pressable>
-              );
-            })}
+
+            <View style={styles.menuItemsContainer}>
+              {menuItems.map(item => {
+                const Icon = item.icon;
+                const isActive = item.key === selectedKey;
+                return (
+                  <Pressable
+                    key={item.key}
+                    style={[styles.menuItem, isActive && styles.menuItemActive]}
+                    onPress={() => handleMenuPress(item.key)}>
+                    <View style={styles.itemIcon}>
+                      <Icon size={18} color={item.danger ? palette.red.main : (isActive ? palette.orange.main : palette.darkGray.main)} />
+                    </View>
+                    <FontText style={[styles.itemLabel, isActive && styles.itemLabelActive, item.danger && styles.itemDanger]}>
+                      {item.label}
+                    </FontText>
+                  </Pressable>
+                );
+              })}
+            </View>
           </View>
         </View>
-      )}
+      </Modal>
     </View>
   );
 }
@@ -168,56 +177,34 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: palette.darkGray.main,
   },
-  titleBadge: {
-    marginTop: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 999,
-    backgroundColor: palette.backgroundGray.light,
-  },
-  titleBadgeText: {
-    color: palette.darkGray.main,
-    fontSize: 12,
-    fontWeight: '600',
-    marginRight: 6,
-  },
   spacer: {
     width: 44,
   },
-  dropdownOverlay: {
-    ...StyleSheet.absoluteFill,
-    zIndex: 100,
-  },
-  backdrop: {
+  modalContainer: {
     flex: 1,
-    backgroundColor: 'transparent',
+    flexDirection: 'row',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
   },
-  dropdown: {
-    position: 'absolute',
-    top: -60,
-    left: -20,
+  modalBackdrop: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  modalDrawer: {
     width: drawerWidth,
     backgroundColor: palette.white.main,
-    paddingVertical: 20,
+    height: '100%',
     paddingHorizontal: 18,
     borderTopRightRadius: 24,
     borderBottomRightRadius: 24,
-    borderColor: palette.backgroundGray.main,
-    borderWidth: 1,
-    shadowColor: 'transparent',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    elevation: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 4, height: 0 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 16,
   },
   drawerHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 24,
+    marginBottom: 28,
   },
   drawerBadge: {
     width: 44,
@@ -226,7 +213,10 @@ const styles = StyleSheet.create({
     backgroundColor: palette.orange.main,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 12,
+  },
+  drawerTitleWrapper: {
+    flex: 1,
+    marginLeft: 12,
   },
   drawerTitle: {
     fontSize: 16,
@@ -245,11 +235,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  menuItemsContainer: {
+    flex: 1,
+  },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 14,
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     borderRadius: 16,
     marginBottom: 8,
   },
@@ -257,7 +250,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FEF3C7',
   },
   itemIcon: {
-    width: 32,
+    width: 24,
     alignItems: 'center',
     marginRight: 12,
   },
@@ -265,6 +258,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: palette.darkGray.main,
     fontWeight: '600',
+  },
+  itemLabelActive: {
+    color: palette.orange.main,
   },
   itemDanger: {
     color: palette.red.main,
