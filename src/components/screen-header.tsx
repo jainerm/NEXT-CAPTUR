@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -17,13 +17,13 @@ import {
   Grid,
   ChevronDown,
 } from 'lucide-react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import FontText from '../theme/FontText';
-import {palette} from '../theme/colors';
-import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import type {RootStackParamList} from '../navigation/RootNavigator';
+import { palette } from '../theme/colors';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../navigation/Root-navigator';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 const drawerWidth = Math.min(300, width * 0.72);
 
 const menuItems: {
@@ -33,13 +33,13 @@ const menuItems: {
   screen: keyof RootStackParamList;
   danger?: boolean;
 }[] = [
-  {key: 'Inicio', label: 'Gestor', icon: Layers, screen: 'Home'},
-  {key: 'Usuarios', label: 'Usuarios', icon: Users, screen: 'Users'},
-  {key: 'Categorías', label: 'Categorías', icon: Grid, screen: 'Categories'},
-  {key: 'Sucursales', label: 'Sucursales', icon: MapPin, screen: 'Branches'},
-  {key: 'Conectividad', label: 'Conectividad', icon: Wifi, screen: 'Connectivity'},
-  {key: 'Finalizar', label: 'Finalizar', icon: LogOut, danger: true, screen: 'Login'},
-];
+    { key: 'Inicio', label: 'Gestor', icon: Layers, screen: 'Home' },
+    { key: 'Usuarios', label: 'Usuarios', icon: Users, screen: 'Users' },
+    { key: 'Categorías', label: 'Categorías', icon: Grid, screen: 'Categories' },
+    { key: 'Sucursales', label: 'Sucursales', icon: MapPin, screen: 'Branches' },
+    { key: 'Conectividad', label: 'Conectividad', icon: Wifi, screen: 'Connectivity' },
+    { key: 'Finalizar', label: 'Finalizar', icon: LogOut, danger: true, screen: 'Login' },
+  ];
 
 const routeTitleMap: Record<string, string> = {
   Inicio: 'Inventario Principal',
@@ -56,7 +56,7 @@ interface ScreenHeaderProps {
   routeName: string;
 }
 
-export default function ScreenHeader({routeName}: ScreenHeaderProps) {
+export default function ScreenHeader({ routeName }: ScreenHeaderProps) {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedKey, setSelectedKey] = useState(routeName);
@@ -75,7 +75,7 @@ export default function ScreenHeader({routeName}: ScreenHeaderProps) {
     setIsOpen(false);
 
     if (nextItem.screen === 'Login') {
-      navigation.reset({index: 0, routes: [{name: 'Login'}]});
+      navigation.reset({ index: 0, routes: [{ name: 'Login' }] });
       return;
     }
 
@@ -122,7 +122,7 @@ export default function ScreenHeader({routeName}: ScreenHeaderProps) {
                   key={item.key}
                   style={[styles.menuItem, isActive && styles.menuItemActive]}
                   onPress={() => handleMenuPress(item.key)}>
-                  <View style={styles.itemIcon}> 
+                  <View style={styles.itemIcon}>
                     <Icon size={18} color={item.danger ? palette.red.main : palette.darkGray.main} />
                   </View>
                   <FontText style={[styles.itemLabel, item.danger && styles.itemDanger]}>{item.label}</FontText>
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     borderColor: palette.backgroundGray.main,
     borderWidth: 1,
     shadowColor: 'transparent',
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0,
     shadowRadius: 0,
     elevation: 0,
