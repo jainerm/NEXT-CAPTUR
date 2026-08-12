@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     // marginVertical: 24,
-    gap: '2%',
+    gap: 8,
   },
   sectionContainer: {
     marginVertical: 12,

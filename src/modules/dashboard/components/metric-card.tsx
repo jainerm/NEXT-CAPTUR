@@ -64,12 +64,12 @@ export default function MetricCard({
 
 const styles = StyleSheet.create({
   card: {
-    width: 122,
+    flex: 1,
     height: 176,
     backgroundColor: '#FFFFFF',
     borderRadius: 18,
     paddingVertical: 14,
-    paddingHorizontal: 12,
+    paddingHorizontal: 8,
     alignItems: 'center',
     justifyContent: 'space-between',
     shadowColor: '#000',
