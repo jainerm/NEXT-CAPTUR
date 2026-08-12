@@ -9,6 +9,7 @@ import UsersScreen from './users-screen';
 import CategoriesScreen from './categories-screen';
 import BranchesScreen from './branches-screen';
 import ConnectivityScreen from './connectivity-screen';
+import ScreenHeader from '../components/screen-header';
 
 const Tab = createBottomTabNavigator();
 const DashboardStack = createNativeStackNavigator();
@@ -17,10 +18,38 @@ function DashboardStackScreen() {
   return (
     <DashboardStack.Navigator screenOptions={{headerShown: false}}>
       <DashboardStack.Screen name="Dashboard" component={DashboardScreen} />
-      <DashboardStack.Screen name="Users" component={UsersScreen} />
-      <DashboardStack.Screen name="Categories" component={CategoriesScreen} />
-      <DashboardStack.Screen name="Branches" component={BranchesScreen} />
-      <DashboardStack.Screen name="Connectivity" component={ConnectivityScreen} />
+      <DashboardStack.Screen 
+        name="Users" 
+        component={UsersScreen} 
+        options={{
+          headerShown: true,
+          header: () => <ScreenHeader routeName="Usuarios" />,
+        }}
+      />
+      <DashboardStack.Screen 
+        name="Categories" 
+        component={CategoriesScreen} 
+        options={{
+          headerShown: true,
+          header: () => <ScreenHeader routeName="Categorías" />,
+        }}
+      />
+      <DashboardStack.Screen 
+        name="Branches" 
+        component={BranchesScreen} 
+        options={{
+          headerShown: true,
+          header: () => <ScreenHeader routeName="Sucursales" />,
+        }}
+      />
+      <DashboardStack.Screen 
+        name="Connectivity" 
+        component={ConnectivityScreen} 
+        options={{
+          headerShown: true,
+          header: () => <ScreenHeader routeName="Conectividad" />,
+        }}
+      />
     </DashboardStack.Navigator>
   );
 }
@@ -29,7 +58,8 @@ export default function HomeScreen() {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        headerShown: false,
+        headerShown: true,
+        header: () => <ScreenHeader routeName={route.name} />,
         tabBarIcon: ({color, size}) => {
           switch (route.name) {
             case 'Inicio':

@@ -12,7 +12,6 @@ import TextField from '../core/ui/TextField';
 import Select from '../core/ui/Select';
 import FontText from '../theme/FontText';
 import { palette } from '../theme/colors';
-import ScreenHeader from '../components/screen-header';
 
 const branchOptions = [
   { label: 'Cali', value: 'cali' },
@@ -57,7 +56,6 @@ export default function UsersScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScreenHeader routeName="Usuarios" />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.card}>
           <FontText style={styles.cardTitle}>Registro de Usuarios</FontText>
@@ -134,7 +132,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 16,
-    paddingTop: 120,
+    paddingTop: 16,
     paddingBottom: 32,
   },
   card: {

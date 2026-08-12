@@ -11,7 +11,6 @@ import Button from '../core/ui/Button';
 import TextField from '../core/ui/TextField';
 import FontText from '../theme/FontText';
 import { palette } from '../theme/colors';
-import ScreenHeader from '../components/screen-header';
 
 const initialLocations = [
   { id: 'loc-1', name: 'Oficina' },
@@ -50,7 +49,6 @@ export default function BranchesScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScreenHeader routeName="Sucursales" />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.card}>
           <FontText style={styles.cardTitle}>Registro de Sucursales</FontText>
@@ -62,8 +60,8 @@ export default function BranchesScreen() {
             onChangeText={setBranchId}
           />
           <TextField
-            label="Nombre"
-            placeholder="Ingrese Nombre"
+            label="Nombre de Sucursal"
+            placeholder="Ingrese Nombre de Sucursal"
             value={branchName}
             onChangeText={setBranchName}
           />
@@ -80,8 +78,8 @@ export default function BranchesScreen() {
             onChangeText={setAddress}
           />
           <TextField
-            label="Centro de costos"
-            placeholder="Ingrese Centro de costos"
+            label="Centro de Costos (Opcional)"
+            placeholder="Ingrese Centro de Costos"
             value={costCenter}
             onChangeText={setCostCenter}
           />
@@ -96,24 +94,23 @@ export default function BranchesScreen() {
 
         <View style={styles.listSection}>
           <View style={styles.listHeader}>
-            <FontText style={styles.sectionTitle}>Ubicaciones</FontText>
+            <FontText style={styles.sectionTitle}>Ubicaciones Asociadas</FontText>
             <TouchableOpacity
               style={styles.addButton}
-              onPress={handleAddLocation}
-              activeOpacity={0.75}>
+              onPress={handleAddLocation}>
               <Plus size={20} color={palette.white.main} />
             </TouchableOpacity>
           </View>
 
-          {locations.map(location => (
-            <View key={location.id} style={styles.locationItem}>
-              <FontText style={styles.locationName}>{location.name}</FontText>
+          {locations.map(item => (
+            <View key={item.id} style={styles.locationItem}>
+              <FontText style={styles.locationName}>{item.name}</FontText>
               <View style={styles.locationActions}>
-                <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
-                  <Edit3 size={18} color={palette.orange.main} />
+                <TouchableOpacity style={styles.iconButton}>
+                  <Edit3 size={16} color={palette.darkGray.main} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
-                  <Trash2 size={18} color={palette.red.main} />
+                <TouchableOpacity style={styles.iconButton}>
+                  <Trash2 size={16} color={palette.red.main} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -131,7 +128,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 16,
-    paddingTop: 120,
+    paddingTop: 16,
     paddingBottom: 32,
   },
   card: {

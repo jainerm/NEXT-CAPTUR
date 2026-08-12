@@ -14,7 +14,6 @@ import { Button, TextField, Select, spacing, fontSizes } from '../core/ui';
 import { palette } from '../theme/colors';
 import FontText from '../theme/FontText';
 import { QrCode, Camera } from 'lucide-react-native';
-import ScreenHeader from '../components/screen-header';
 
 export default function InventoryScreen() {
   const [form, setForm] = useState({
@@ -86,7 +85,6 @@ export default function InventoryScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScreenHeader routeName="Inventario" />
       <ScrollView
         contentContainerStyle={styles.scrollContainer}
         showsVerticalScrollIndicator={false}>

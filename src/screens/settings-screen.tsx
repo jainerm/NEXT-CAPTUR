@@ -7,7 +7,6 @@ import {
   Switch,
   Alert,
 } from 'react-native';
-import ScreenHeader from '../components/screen-header';
 import Button from '../core/ui/Button';
 import FontText from '../theme/FontText';
 import { palette } from '../theme/colors';
@@ -59,7 +58,6 @@ export default function SettingsScreen() {
 
   return (
     <View style={styles.screen}>
-      <ScreenHeader routeName="Ajustes" />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.card}>
           <FontText style={styles.heading}>Ajustes</FontText>
@@ -94,7 +92,7 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 16,
-    paddingTop: 120,
+    paddingTop: 16,
     paddingBottom: 24,
   },
   card: {

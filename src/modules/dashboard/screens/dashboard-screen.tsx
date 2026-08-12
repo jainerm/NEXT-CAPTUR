@@ -4,7 +4,6 @@ import MetricCard from '../components/metric-card';
 import BranchTotalsCard from '../components/branch-total-card';
 import { palette } from '../../../theme/colors';
 import FontText from '../../../theme/FontText';
-import ScreenHeader from '../../../components/screen-header';
 
 export default function DashboardScreen() {
   const metricItems = [
@@ -35,7 +34,6 @@ export default function DashboardScreen() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContent} style={styles.scroll}>
       <View style={styles.container}>
-        <ScreenHeader routeName="Inicio" />
         <View style={styles.sectionContainer}>
           <FontText style={styles.title}>Total activos por sucursal</FontText>
           <SummaryCard {...summaryData} />

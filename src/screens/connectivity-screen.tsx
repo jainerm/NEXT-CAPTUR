@@ -5,7 +5,6 @@ import Button from '../core/ui/Button';
 import TextField from '../core/ui/TextField';
 import FontText from '../theme/FontText';
 import { palette } from '../theme/colors';
-import ScreenHeader from '../components/screen-header';
 
 const initialConnections = [
   {
@@ -80,7 +79,6 @@ export default function ConnectivityScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScreenHeader routeName="Conectividad" />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.card}>
           <View style={styles.cardHeader}>
@@ -164,7 +162,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 16,
-    paddingTop: 120,
+    paddingTop: 16,
     paddingBottom: 32,
   },
   card: {

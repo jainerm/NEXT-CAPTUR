@@ -10,7 +10,6 @@ import {
   Alert,
 } from 'react-native';
 import { CalendarDays, Send, Trash2, X } from 'lucide-react-native';
-import ScreenHeader from '../components/screen-header';
 import TextField from '../core/ui/TextField';
 import Select from '../core/ui/Select';
 import Button from '../core/ui/Button';
@@ -160,7 +159,6 @@ export default function ReportsScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScreenHeader routeName="Reportes" />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.card}>
           <FontText style={styles.cardTitle}>Reportes de Inventario</FontText>
@@ -329,7 +327,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 16,
-    paddingTop: 120,
+    paddingTop: 16,
     paddingBottom: 32,
   },
   card: {

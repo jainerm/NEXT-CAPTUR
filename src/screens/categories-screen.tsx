@@ -12,7 +12,6 @@ import Button from '../core/ui/Button';
 import TextField from '../core/ui/TextField';
 import FontText from '../theme/FontText';
 import { palette } from '../theme/colors';
-import ScreenHeader from '../components/screen-header';
 
 const initialItems = [
   {
@@ -115,7 +114,6 @@ export default function CategoriesScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScreenHeader routeName="Categorías" />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.card}>
           <FontText style={styles.cardTitle}>Gestión de Categorías</FontText>
@@ -202,7 +200,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 16,
-    paddingTop: 120,
+    paddingTop: 16,
     paddingBottom: 32,
   },
   card: {

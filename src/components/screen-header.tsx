@@ -18,6 +18,7 @@ import {
   ChevronDown,
 } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import FontText from '../theme/FontText';
 import { palette } from '../theme/colors';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -58,6 +59,7 @@ interface ScreenHeaderProps {
 
 export default function ScreenHeader({ routeName }: ScreenHeaderProps) {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const insets = useSafeAreaInsets();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedKey, setSelectedKey] = useState(routeName);
 
@@ -138,16 +140,12 @@ export default function ScreenHeader({ routeName }: ScreenHeaderProps) {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 99,
-    width: '100%',
     paddingHorizontal: 16,
-    paddingTop: 16,
+    paddingTop: 6,
     paddingBottom: 10,
     backgroundColor: palette.white.main,
+    borderBottomWidth: 1,
+    borderBottomColor: palette.backgroundGray.main,
   },
   headerRow: {
     flexDirection: 'row',
