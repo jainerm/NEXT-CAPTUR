@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -9,13 +9,13 @@ import {
   Platform,
   Alert,
 } from 'react-native';
-import {CalendarDays, Send, Trash2, X} from 'lucide-react-native';
-import ScreenHeader from '../components/ScreenHeader';
+import { CalendarDays, Send, Trash2, X } from 'lucide-react-native';
+import ScreenHeader from '../components/screen-header';
 import TextField from '../core/ui/TextField';
 import Select from '../core/ui/Select';
 import Button from '../core/ui/Button';
 import FontText from '../theme/FontText';
-import {palette} from '../theme/colors';
+import { palette } from '../theme/colors';
 
 const initialReports = [
   {
@@ -39,42 +39,42 @@ const initialReports = [
 ];
 
 const reportTypes = [
-  {label: 'Acta de Inventario', value: 'acta'},
-  {label: 'Resumen de Activos', value: 'resumen'},
+  { label: 'Acta de Inventario', value: 'acta' },
+  { label: 'Resumen de Activos', value: 'resumen' },
 ];
 
 const users = [
-  {label: 'Todos', value: 'all'},
-  {label: 'USR-001', value: 'usr-001'},
+  { label: 'Todos', value: 'all' },
+  { label: 'USR-001', value: 'usr-001' },
 ];
 
 const branches = [
-  {label: 'Todas', value: 'all'},
-  {label: 'Cali', value: 'cali'},
+  { label: 'Todas', value: 'all' },
+  { label: 'Cali', value: 'cali' },
 ];
 
 const categories = [
-  {label: 'Todas', value: 'all'},
-  {label: 'Dispositivos Electrónicos', value: 'electronics'},
+  { label: 'Todas', value: 'all' },
+  { label: 'Dispositivos Electrónicos', value: 'electronics' },
 ];
 
 const months = [
-  {label: 'Enero', value: 1},
-  {label: 'Febrero', value: 2},
-  {label: 'Marzo', value: 3},
-  {label: 'Abril', value: 4},
-  {label: 'Mayo', value: 5},
-  {label: 'Junio', value: 6},
-  {label: 'Julio', value: 7},
-  {label: 'Agosto', value: 8},
-  {label: 'Septiembre', value: 9},
-  {label: 'Octubre', value: 10},
-  {label: 'Noviembre', value: 11},
-  {label: 'Diciembre', value: 12},
+  { label: 'Enero', value: 1 },
+  { label: 'Febrero', value: 2 },
+  { label: 'Marzo', value: 3 },
+  { label: 'Abril', value: 4 },
+  { label: 'Mayo', value: 5 },
+  { label: 'Junio', value: 6 },
+  { label: 'Julio', value: 7 },
+  { label: 'Agosto', value: 8 },
+  { label: 'Septiembre', value: 9 },
+  { label: 'Octubre', value: 10 },
+  { label: 'Noviembre', value: 11 },
+  { label: 'Diciembre', value: 12 },
 ];
 
 const currentYear = new Date().getFullYear();
-const years = Array.from({length: 8}, (_, idx) => currentYear - 3 + idx).map(value => ({
+const years = Array.from({ length: 8 }, (_, idx) => currentYear - 3 + idx).map(value => ({
   label: value.toString(),
   value,
 }));
@@ -121,13 +121,13 @@ export default function ReportsScreen() {
       'Enviar reporte',
       `¿Deseas enviar el reporte "${report.title}"?`,
       [
-        {text: 'Cancelar', style: 'cancel'},
+        { text: 'Cancelar', style: 'cancel' },
         {
           text: 'Enviar',
           onPress: () => {
             setReports(prevReports =>
               prevReports.map(item =>
-                item.id === id ? {...item, sent: true} : item,
+                item.id === id ? { ...item, sent: true } : item,
               ),
             );
             Alert.alert('Reporte enviado', 'El reporte se ha marcado como enviado.');
@@ -145,7 +145,7 @@ export default function ReportsScreen() {
       'Eliminar reporte',
       `¿Seguro que quieres eliminar el reporte "${report.title}"?`,
       [
-        {text: 'Cancelar', style: 'cancel'},
+        { text: 'Cancelar', style: 'cancel' },
         {
           text: 'Eliminar',
           style: 'destructive',
@@ -169,7 +169,7 @@ export default function ReportsScreen() {
             label="Tipo de Reporte"
             value={reportType}
             options={reportTypes}
-            onSelect={option => setReportType(option.value)}
+            onSelect={option => setReportType(String(option.value))}
           />
 
           <TouchableOpacity activeOpacity={0.8} onPress={openDatePicker}>
@@ -186,21 +186,21 @@ export default function ReportsScreen() {
             label="Usuario"
             value={user}
             options={users}
-            onSelect={option => setUser(option.value)}
+            onSelect={option => setUser(String(option.value))}
           />
 
           <Select
             label="Sucursal"
             value={branch}
             options={branches}
-            onSelect={option => setBranch(option.value)}
+            onSelect={option => setBranch(String(option.value))}
           />
 
           <Select
             label="Categoría"
             value={category}
             options={categories}
-            onSelect={option => setCategory(option.value)}
+            onSelect={option => setCategory(String(option.value))}
           />
 
           <TextField
@@ -214,11 +214,11 @@ export default function ReportsScreen() {
             label="Estado"
             value={status}
             options={[
-              {label: 'Todos', value: 'all'},
-              {label: 'Activo', value: 'active'},
-              {label: 'Inactivo', value: 'inactive'},
+              { label: 'Todos', value: 'all' },
+              { label: 'Activo', value: 'active' },
+              { label: 'Inactivo', value: 'inactive' },
             ]}
-            onSelect={option => setStatus(option.value)}
+            onSelect={option => setStatus(String(option.value))}
           />
 
           <View style={styles.formatRow}>
@@ -264,7 +264,7 @@ export default function ReportsScreen() {
                   <Select
                     label="Día"
                     value={String(selectedDate.getDate())}
-                    options={Array.from({length: getDaysInMonth(selectedDate.getFullYear(), selectedDate.getMonth() + 1)}, (_, index) => ({
+                    options={Array.from({ length: getDaysInMonth(selectedDate.getFullYear(), selectedDate.getMonth() + 1) }, (_, index) => ({
                       label: String(index + 1),
                       value: String(index + 1),
                     }))}
@@ -275,7 +275,7 @@ export default function ReportsScreen() {
                   <Select
                     label="Mes"
                     value={String(selectedDate.getMonth() + 1)}
-                    options={months.map(month => ({label: month.label, value: String(month.value)}))}
+                    options={months.map(month => ({ label: month.label, value: String(month.value) }))}
                     onSelect={option => updateSelectedDate(selectedDate.getFullYear(), Number(option.value), selectedDate.getDate())}
                   />
                 </View>
@@ -283,7 +283,7 @@ export default function ReportsScreen() {
                   <Select
                     label="Año"
                     value={String(selectedDate.getFullYear())}
-                    options={years.map(year => ({label: year.label, value: String(year.value)}))}
+                    options={years.map(year => ({ label: year.label, value: String(year.value) }))}
                     onSelect={option => updateSelectedDate(Number(option.value), selectedDate.getMonth() + 1, selectedDate.getDate())}
                   />
                 </View>
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.06,
     shadowRadius: 16,
     elevation: 5,
@@ -404,7 +404,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.06,
     shadowRadius: 16,
     elevation: 5,

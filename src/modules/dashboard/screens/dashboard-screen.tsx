@@ -1,16 +1,16 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import SummaryCard from '../components/summary-card';
 import MetricCard from '../components/metric-card';
 import BranchTotalsCard from '../components/branch-total-card';
 import { palette } from '../../../theme/colors';
 import FontText from '../../../theme/FontText';
-import ScreenHeader from '../../../components/ScreenHeader';
+import ScreenHeader from '../../../components/screen-header';
 
 export default function DashboardScreen() {
   const metricItems = [
-    {title: 'Muebles y Enseres', value: '$500k', percentage: 0.4, ringColor: '#F97316'},
-    {title: 'Inventario Total', value: '$820k', percentage: 0.68, ringColor: '#3B82F6'},
-    {title: 'Ventas Actuales', value: '$320k', percentage: 0.54, ringColor: '#10B981'},
+    { title: 'Muebles y Enseres', value: '$500k', percentage: 0.4, ringColor: '#F97316' },
+    { title: 'Inventario Total', value: '$820k', percentage: 0.68, ringColor: '#3B82F6' },
+    { title: 'Ventas Actuales', value: '$320k', percentage: 0.54, ringColor: '#10B981' },
   ];
 
   const summaryData = {
@@ -19,17 +19,17 @@ export default function DashboardScreen() {
     delta: '+5%',
     deltaPositive: true,
     rows: [
-      {label: 'Sucursal A', progress: 0.92, color: '#F44336'},
-      {label: 'Sucursal B', progress: 0.68, color: '#FB8C00'},
-      {label: 'Sucursal C', progress: 0.82, color: '#EF5350'},
+      { label: 'Sucursal A', progress: 0.92, color: '#F44336' },
+      { label: 'Sucursal B', progress: 0.68, color: '#FB8C00' },
+      { label: 'Sucursal C', progress: 0.82, color: '#EF5350' },
     ],
   };
 
   const branchTotals = [
-    {date: '15/07/24', branch: 'A', total: '58'},
-    {date: '12/07/24', branch: 'C', total: '72'},
-    {date: '10/07/24', branch: 'B', total: '45'},
-    {date: '05/07/24', branch: 'A', total: '61'},
+    { date: '15/07/24', branch: 'A', total: '58' },
+    { date: '12/07/24', branch: 'C', total: '72' },
+    { date: '10/07/24', branch: 'B', total: '45' },
+    { date: '05/07/24', branch: 'A', total: '61' },
   ];
 
   return (
@@ -37,25 +37,25 @@ export default function DashboardScreen() {
       <View style={styles.container}>
         <ScreenHeader routeName="Inicio" />
         <View style={styles.sectionContainer}>
-        <FontText style={styles.title}>Total activos por sucursal</FontText>
-        <SummaryCard {...summaryData} />
+          <FontText style={styles.title}>Total activos por sucursal</FontText>
+          <SummaryCard {...summaryData} />
         </View>
         <View style={styles.sectionContainer}>
-           <Text style={styles.title}>Resumen categorías</Text>
-        <View style={styles.metricsRow}>
-          {metricItems.map(item => (
-            <MetricCard
-              key={item.title}
-              title={item.title}
-              value={item.value}
-              percentage={item.percentage}
-              ringColor={item.ringColor}
-            />
-          ))}
+          <Text style={styles.title}>Resumen categorías</Text>
+          <View style={styles.metricsRow}>
+            {metricItems.map(item => (
+              <MetricCard
+                key={item.title}
+                title={item.title}
+                value={item.value}
+                percentage={item.percentage}
+                ringColor={item.ringColor}
+              />
+            ))}
           </View>
         </View>
         <View style={styles.sectionContainer}>
-        <Text style={styles.title}>Activos recientes</Text>
+          <Text style={styles.title}>Activos recientes</Text>
           <BranchTotalsCard title="Últimos totales" subtitle="Por fecha y sucursal" items={branchTotals} />
         </View>
       </View>

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Animated,
   StyleSheet,
@@ -7,12 +7,12 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import {Plus, Trash2, ChevronDown, ChevronUp} from 'lucide-react-native';
+import { Plus, Trash2, ChevronDown, ChevronUp } from 'lucide-react-native';
 import Button from '../core/ui/Button';
 import TextField from '../core/ui/TextField';
 import FontText from '../theme/FontText';
-import {palette} from '../theme/colors';
-import ScreenHeader from '../components/ScreenHeader';
+import { palette } from '../theme/colors';
+import ScreenHeader from '../components/screen-header';
 
 const initialItems = [
   {
@@ -66,7 +66,7 @@ export default function CategoriesScreen() {
   const toggleItemExpanded = (id: string) => {
     setItems(current =>
       current.map(item =>
-        item.id === id ? {...item, expanded: !item.expanded} : item,
+        item.id === id ? { ...item, expanded: !item.expanded } : item,
       ),
     );
   };
@@ -74,7 +74,7 @@ export default function CategoriesScreen() {
   const handleItemDetailChange = (id: string, detail: string) => {
     setItems(current =>
       current.map(item =>
-        item.id === id ? {...item, detail} : item,
+        item.id === id ? { ...item, detail } : item,
       ),
     );
   };
@@ -142,7 +142,7 @@ export default function CategoriesScreen() {
           </View>
 
           {items.map(item => (
-            <View key={item.id} style={[styles.itemContainer, {backgroundColor: item.color}]}> 
+            <View key={item.id} style={[styles.itemContainer, { backgroundColor: item.color }]}>
               <TouchableOpacity
                 style={styles.itemRow}
                 activeOpacity={0.8}
@@ -186,7 +186,7 @@ export default function CategoriesScreen() {
           />
         </View>
         {confirmationVisible && (
-          <Animated.View style={[styles.confirmationToast, {opacity: toastOpacity}]}> 
+          <Animated.View style={[styles.confirmationToast, { opacity: toastOpacity }]}>
             <FontText style={styles.confirmationText}>Categoría guardada correctamente</FontText>
           </Animated.View>
         )}
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.06,
     shadowRadius: 20,
     elevation: 5,
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.04,
     shadowRadius: 16,
     elevation: 4,
@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   iconRotated: {
-    transform: [{rotate: '180deg'}],
+    transform: [{ rotate: '180deg' }],
   },
   itemDetails: {
     paddingHorizontal: 18,
@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.12,
     shadowRadius: 16,
     elevation: 6,

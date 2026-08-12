@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,16 +6,16 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import {Plus, Edit3, Trash2} from 'lucide-react-native';
+import { Plus, Edit3, Trash2 } from 'lucide-react-native';
 import Button from '../core/ui/Button';
 import TextField from '../core/ui/TextField';
 import FontText from '../theme/FontText';
-import {palette} from '../theme/colors';
-import ScreenHeader from '../components/ScreenHeader';
+import { palette } from '../theme/colors';
+import ScreenHeader from '../components/screen-header';
 
 const initialLocations = [
-  {id: 'loc-1', name: 'Oficina'},
-  {id: 'loc-2', name: 'Puesto de trabajo'},
+  { id: 'loc-1', name: 'Oficina' },
+  { id: 'loc-2', name: 'Puesto de trabajo' },
 ];
 
 export default function BranchesScreen() {
@@ -44,7 +44,7 @@ export default function BranchesScreen() {
   const handleAddLocation = () => {
     setLocations(current => [
       ...current,
-      {id: `loc-${current.length + 1}`, name: `Nueva ubicación ${current.length + 1}`},
+      { id: `loc-${current.length + 1}`, name: `Nueva ubicación ${current.length + 1}` },
     ]);
   };
 
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.06,
     shadowRadius: 20,
     elevation: 5,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.04,
     shadowRadius: 16,
     elevation: 4,
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 10,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.08,
     shadowRadius: 10,
     elevation: 2,

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,10 +7,10 @@ import {
   Switch,
   Alert,
 } from 'react-native';
-import ScreenHeader from '../components/ScreenHeader';
+import ScreenHeader from '../components/screen-header';
 import Button from '../core/ui/Button';
 import FontText from '../theme/FontText';
-import {palette} from '../theme/colors';
+import { palette } from '../theme/colors';
 
 const settingsOptions = [
   {
@@ -50,7 +50,7 @@ export default function SettingsScreen() {
   });
 
   const toggleOption = (key: keyof typeof toggles) => {
-    setToggles(prev => ({...prev, [key]: !prev[key]}));
+    setToggles(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
   const handleSave = () => {
@@ -75,7 +75,7 @@ export default function SettingsScreen() {
                 value={toggles[option.id as keyof typeof toggles]}
                 onValueChange={() => toggleOption(option.id as keyof typeof toggles)}
                 thumbColor={toggles[option.id as keyof typeof toggles] ? palette.white.main : palette.white.main}
-                trackColor={{false: palette.backgroundGray.main, true: palette.green.main}}
+                trackColor={{ false: palette.backgroundGray.main, true: palette.green.main }}
               />
             </View>
           ))}
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 12},
+    shadowOffset: { width: 0, height: 12 },
     shadowOpacity: 0.07,
     shadowRadius: 24,
     elevation: 6,

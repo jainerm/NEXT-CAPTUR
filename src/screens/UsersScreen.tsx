@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -6,23 +6,23 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import {Edit3, Trash2, User} from 'lucide-react-native';
+import { Edit3, Trash2, User } from 'lucide-react-native';
 import Button from '../core/ui/Button';
 import TextField from '../core/ui/TextField';
 import Select from '../core/ui/Select';
 import FontText from '../theme/FontText';
-import {palette} from '../theme/colors';
-import ScreenHeader from '../components/ScreenHeader';
+import { palette } from '../theme/colors';
+import ScreenHeader from '../components/screen-header';
 
 const branchOptions = [
-  {label: 'Cali', value: 'cali'},
-  {label: 'Bogotá', value: 'bogota'},
-  {label: 'Medellín', value: 'medellin'},
+  { label: 'Cali', value: 'cali' },
+  { label: 'Bogotá', value: 'bogota' },
+  { label: 'Medellín', value: 'medellin' },
 ];
 
 const initialUsers = [
-  {id: 'USR-001', name: 'Juan Pérez', branch: 'Cali'},
-  {id: 'USR-002', name: 'María Rodríguez', branch: 'Cali'},
+  { id: 'USR-001', name: 'Juan Pérez', branch: 'Cali' },
+  { id: 'USR-002', name: 'María Rodríguez', branch: 'Cali' },
 ];
 
 export default function UsersScreen() {
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.06,
     shadowRadius: 20,
     elevation: 5,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.04,
     shadowRadius: 16,
     elevation: 4,

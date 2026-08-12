@@ -26,13 +26,19 @@ import type {RootStackParamList} from '../navigation/RootNavigator';
 const {width} = Dimensions.get('window');
 const drawerWidth = Math.min(300, width * 0.72);
 
-const menuItems = [
-  {key: 'Inicio', label: 'Gestor', icon: Layers, tab: 'Inicio', screen: 'Dashboard'},
-  {key: 'Usuarios', label: 'Usuarios', icon: Users, tab: 'Inicio', screen: 'Users'},
-  {key: 'Categorías', label: 'Categorías', icon: Grid, tab: 'Inicio', screen: 'Categories'},
-  {key: 'Sucursales', label: 'Sucursales', icon: MapPin, tab: 'Inicio', screen: 'Branches'},
-  {key: 'Conectividad', label: 'Conectividad', icon: Wifi, tab: 'Inicio', screen: 'Connectivity'},
-  {key: 'Finalizar', label: 'Finalizar', icon: LogOut, danger: true, tab: 'Login'},
+const menuItems: {
+  key: string;
+  label: string;
+  icon: any;
+  screen: keyof RootStackParamList;
+  danger?: boolean;
+}[] = [
+  {key: 'Inicio', label: 'Gestor', icon: Layers, screen: 'Home'},
+  {key: 'Usuarios', label: 'Usuarios', icon: Users, screen: 'Users'},
+  {key: 'Categorías', label: 'Categorías', icon: Grid, screen: 'Categories'},
+  {key: 'Sucursales', label: 'Sucursales', icon: MapPin, screen: 'Branches'},
+  {key: 'Conectividad', label: 'Conectividad', icon: Wifi, screen: 'Connectivity'},
+  {key: 'Finalizar', label: 'Finalizar', icon: LogOut, danger: true, screen: 'Login'},
 ];
 
 const routeTitleMap: Record<string, string> = {
@@ -68,14 +74,12 @@ export default function ScreenHeader({routeName}: ScreenHeaderProps) {
     setSelectedKey(key);
     setIsOpen(false);
 
-    if (nextItem.tab === 'Login') {
+    if (nextItem.screen === 'Login') {
       navigation.reset({index: 0, routes: [{name: 'Login'}]});
       return;
     }
 
-    navigation.navigate(nextItem.tab, {
-      screen: nextItem.screen,
-    });
+    navigation.navigate(nextItem.screen);
   };
 
   const title = routeTitleMap[routeName] ?? 'Captúr';
@@ -186,7 +190,7 @@ const styles = StyleSheet.create({
     width: 44,
   },
   dropdownOverlay: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     zIndex: 100,
   },
   backdrop: {

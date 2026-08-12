@@ -1,11 +1,11 @@
-import React, {useMemo, useState} from 'react';
-import {StyleSheet, SafeAreaView, ScrollView, View, TouchableOpacity} from 'react-native';
-import {CheckCircle2, Wifi, XCircle} from 'lucide-react-native';
+import React, { useMemo, useState } from 'react';
+import { StyleSheet, SafeAreaView, ScrollView, View, TouchableOpacity } from 'react-native';
+import { CheckCircle2, Wifi, XCircle } from 'lucide-react-native';
 import Button from '../core/ui/Button';
 import TextField from '../core/ui/TextField';
 import FontText from '../theme/FontText';
-import {palette} from '../theme/colors';
-import ScreenHeader from '../components/ScreenHeader';
+import { palette } from '../theme/colors';
+import ScreenHeader from '../components/screen-header';
 
 const initialConnections = [
   {
@@ -73,7 +73,7 @@ export default function ConnectivityScreen() {
   };
 
   const statusColor = useMemo(
-    () => (status: 'Activo' | 'Fallida') =>
+    () => (status: string) =>
       status === 'Activo' ? palette.green.main : palette.red.main,
     [],
   );
@@ -146,7 +146,7 @@ export default function ConnectivityScreen() {
                 <FontText style={styles.connectionSub}>{connection.date}</FontText>
               </View>
               <View style={styles.statusRow}>
-                <View style={[styles.statusDot, {backgroundColor: statusColor(connection.status)}]} />
+                <View style={[styles.statusDot, { backgroundColor: statusColor(connection.status) }]} />
                 <FontText style={styles.statusLabel}>{connection.status}</FontText>
               </View>
             </View>
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.08,
     shadowRadius: 20,
     elevation: 6,
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 20,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.06,
     shadowRadius: 16,
     elevation: 5,

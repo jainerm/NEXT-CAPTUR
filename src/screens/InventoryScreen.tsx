@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,11 +10,11 @@ import {
   Image,
   Alert,
 } from 'react-native';
-import {Button, TextField, Select, spacing, fontSizes} from '../core/ui';
-import {palette} from '../theme/colors';
+import { Button, TextField, Select, spacing, fontSizes } from '../core/ui';
+import { palette } from '../theme/colors';
 import FontText from '../theme/FontText';
-import {QrCode, Camera} from 'lucide-react-native';
-import ScreenHeader from '../components/ScreenHeader';
+import { QrCode, Camera } from 'lucide-react-native';
+import ScreenHeader from '../components/screen-header';
 
 export default function InventoryScreen() {
   const [form, setForm] = useState({
@@ -29,19 +29,19 @@ export default function InventoryScreen() {
   });
 
   const handleInputChange = (key: string, value: any) => {
-    setForm(prev => ({...prev, [key]: value}));
+    setForm(prev => ({ ...prev, [key]: value }));
   };
 
   const estados = [
-    {label: 'En uso', value: 'En uso'},
-    {label: 'Mantenimiento', value: 'Mantenimiento'},
-    {label: 'Baja', value: 'Baja'},
+    { label: 'En uso', value: 'En uso' },
+    { label: 'Mantenimiento', value: 'Mantenimiento' },
+    { label: 'Baja', value: 'Baja' },
   ];
 
   const categorias = [
-    {label: 'Muebles', value: 'muebles'},
-    {label: 'Equipos', value: 'equipos'},
-    {label: 'Vehículos', value: 'vehiculos'},
+    { label: 'Muebles', value: 'muebles' },
+    { label: 'Equipos', value: 'equipos' },
+    { label: 'Vehículos', value: 'vehiculos' },
   ];
 
   const [photoModalVisible, setPhotoModalVisible] = useState(false);
@@ -90,7 +90,7 @@ export default function InventoryScreen() {
       <ScrollView
         contentContainerStyle={styles.scrollContainer}
         showsVerticalScrollIndicator={false}>
-        
+
         <View style={styles.header}>
           <FontText style={styles.totalText}>
             Total registrados: <FontText style={styles.totalNumber}>1</FontText>
@@ -173,7 +173,7 @@ export default function InventoryScreen() {
             onPress={openPhotoModal}
             leftIcon={<Camera size={20} color={palette.orange.main} />}
             style={styles.photoButton}
-            textStyle={{color: palette.orange.main}}
+            textStyle={{ color: palette.orange.main }}
           />
           {photoTaken && (
             <View style={styles.photoStatus}>
@@ -202,9 +202,9 @@ export default function InventoryScreen() {
                 </TouchableOpacity>
               </View>
               <Text style={styles.modalSubtitle}>Coloque el activo dentro del marco</Text>
-                  <View style={styles.cameraFrame}>
+              <View style={styles.cameraFrame}>
                 {photoUri ? (
-                  <Image source={{uri: photoUri}} style={styles.cameraPreview} />
+                  <Image source={{ uri: photoUri }} style={styles.cameraPreview} />
                 ) : (
                   <View style={styles.cameraPlaceholder} />
                 )}
