@@ -1,11 +1,29 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Home, Box, BarChart3, Settings2} from 'lucide-react-native';
 import DashboardScreen from '../modules/dashboard/screens/dashboard-screen';
 import InventoryScreen from './InventoryScreen';
 import ReportsScreen from './ReportsScreen';
 import SettingsScreen from './SettingsScreen';
+import UsersScreen from './UsersScreen';
+import CategoriesScreen from './CategoriesScreen';
+import BranchesScreen from './BranchesScreen';
+import ConnectivityScreen from './ConnectivityScreen';
 
 const Tab = createBottomTabNavigator();
+const DashboardStack = createNativeStackNavigator();
+
+function DashboardStackScreen() {
+  return (
+    <DashboardStack.Navigator screenOptions={{headerShown: false}}>
+      <DashboardStack.Screen name="Dashboard" component={DashboardScreen} />
+      <DashboardStack.Screen name="Users" component={UsersScreen} />
+      <DashboardStack.Screen name="Categories" component={CategoriesScreen} />
+      <DashboardStack.Screen name="Branches" component={BranchesScreen} />
+      <DashboardStack.Screen name="Connectivity" component={ConnectivityScreen} />
+    </DashboardStack.Navigator>
+  );
+}
 
 export default function HomeScreen() {
   return (
@@ -33,7 +51,7 @@ export default function HomeScreen() {
         },
       })}
     >
-      <Tab.Screen name="Inicio" component={DashboardScreen} />
+      <Tab.Screen name="Inicio" component={DashboardStackScreen} />
       <Tab.Screen name="Inventario" component={InventoryScreen} />
       <Tab.Screen name="Reportes" component={ReportsScreen} />
       <Tab.Screen name="Ajustes" component={SettingsScreen} />

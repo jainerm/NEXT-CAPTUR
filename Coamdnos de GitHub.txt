@@ -1,0 +1,34 @@
+Para cambiar de usuario de GitHub al subir cambios, debes actualizar la configuración de tu nombre y correo en Git. Puedes hacerlo para un solo proyecto o para todo tu computador. También puedes guardar tus datos con un token de acceso personal si usas una contraseña.
+
+Cambiar el usuario en un proyecto
+
+Abre tu terminal dentro de la carpeta del proyecto. Escribe estos comandos con tus datos reales:
+
+Configura tu nombre: 
+   git config user.name "Tu Nuevo Nombre"
+
+Configura tu correo: 
+   git config user.email "tucorreo@ejemplo.com"
+
+Revisa los cambios: 
+   git config user.name y 
+   git config user.email
+
+Cambiar el usuario en todo el equipoUsa la opción
+
+ --global para que aplique a todos tus repositorios futuros:
+
+Nombre global: 
+   git config --global user.name "Tu Nuevo Nombre"
+
+Correo global: 
+   git config --global user.email "tucorreo@ejemplo.com"
+
+Actualizar tus credenciales guardadas
+
+Si tu computador recuerda una cuenta vieja al empujar (push), debes borrar o actualizar las credenciales guardadas:
+
+En Windows, busca "Administrador de credenciales" en el menú de inicio y borra los datos de git:https://github.com.
+
+En Mac, abre Acceso a Llaveros (Keychain Access) y busca la entrada de GitHub para eliminarla o cambiarla.¿Te da algún error específico al intentar subir los cambios o necesitas ayuda para crear un token de acceso?
+
